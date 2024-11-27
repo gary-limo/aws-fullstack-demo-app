@@ -26,7 +26,7 @@ class App extends Component<AppProps, AppState> {
       isAuthenticating: true
     };
 
-    document.title = "Bookstore Demo"
+    document.title = "AI Agents"
   }
   
   async componentDidMount() {
@@ -58,10 +58,10 @@ class App extends Component<AppProps, AppState> {
   showLoggedInBar = () => (
     <Fragment>
       <LinkContainer to="/past">
-        <NavItem><span className="orange line-height-24">Past orders</span></NavItem>
+        <NavItem><span className="orange line-height-24">History</span></NavItem>
       </LinkContainer>
       <LinkContainer to="/best">
-        <NavItem><span className="orange line-height-24">Best sellers</span></NavItem>
+        <NavItem><span className="orange line-height-24">Tasks</span></NavItem>
       </LinkContainer>
       <NavItem onClick={this.handleLogout}><span className="orange line-height-24">Log out</span></NavItem>
       <LinkContainer to="/cart">
@@ -98,7 +98,7 @@ class App extends Component<AppProps, AppState> {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">
-                <span className="orange"> <img src={bookstoreIcon} alt="bookstore" /> BOOKSTORE</span>
+                <span className="orange"> <img src={bookstoreIcon} alt="bookstore" /> Home</span>
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />

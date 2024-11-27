@@ -47,7 +47,7 @@ export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
             </div>
           </div>
           <div className="col-md-4 title-padding">
-          <h3 className="no-margin white">Best<span className="orange">{` deals `}</span>of the day</h3>
+           <h3 className="no-margin white">Search<span className="orange">{` Website `}</span></h3>
           </div>
         </div>
       </form>

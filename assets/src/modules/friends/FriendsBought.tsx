@@ -38,7 +38,7 @@ export class FriendsBought extends React.Component<FriendsBoughtProps, FriendsBo
     return (
       <div className="well-bs no-padding-top col-md-12 no-border">
         <div className="container-category">
-          <h3>Books your friends have bought</h3>
+          <h3>What your co-workers doing ?</h3>
         </div>
         {this.state.recommendations.slice(0,5).map(recommendation =>
           <ProductRow bookId={recommendation.bookId} key={recommendation.bookId} />

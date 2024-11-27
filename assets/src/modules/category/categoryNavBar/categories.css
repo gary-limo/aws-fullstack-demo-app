@@ -17,3 +17,8 @@
 .top-hero-padding{
 	padding-top: 0 !important;
 }
+/* categories.css */
+.nav-cat-gap {
+	height: 50px; /* Adjust this to match the height of CategoryNavBar */
+	width: 100%;
+  }

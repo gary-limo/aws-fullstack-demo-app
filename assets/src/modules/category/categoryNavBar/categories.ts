@@ -1,9 +1,9 @@
 export const categories = {
-  cooks: "Cookbooks",
-  database: "Database",
-  fairy: "Fairy Tales",
-  scifi: "Science Fiction",
-  home: "Home Improvement",
-  cars: "Cars",
-  woodwork: "Woodwork",
+  snowflake: "SnowFlake",
+  compliance: "Compliance",
+  dg: "Data Governance",
+  id: "Info Delivery",
+  wn: "What's Next",
+  rag: "RAG",
+  faq: "FAQ",
 }
