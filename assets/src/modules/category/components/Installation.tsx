@@ -1,8 +1,10 @@
 import React from 'react';
 import './SnowflakeContent.css';
+//import { Gap } from "../categoryNavBar/Gap";
 
 export const Installation: React.FC = () => {
   return (
+     
     <div className="content-wrapper">
       <h1>Snowflake Documentation</h1>
       

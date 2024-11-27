@@ -2,6 +2,12 @@
   width: 250px;
   background: #ffffff;
   padding: 20px;
+  position: fixed;
+  top: 120px;
+  left: 0;
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+  z-index: 101;
 }
 
 .sidebar-section {
@@ -9,27 +15,27 @@
   width: 100%;
 }
 
-.sidebar-section-header h3 {
-  margin: 0 0 12px 0;
-  font-size: 20px;
-  font-weight: 500;
-  color: #1f1f1f;
-}
+ 
 
 .sidebar-item {
     font-size: 14px;
     color: #1a1a1a;
     text-decoration: none;
     padding: 8px 12px; /* More consistent padding */
-    line-height: 1.4;
+    line-height: 1.5;
     cursor: pointer;
     border-radius: 4px; /* Add rounded corners */
     transition: all 0.2s ease; /* Smooth transitions */
+    font-size: 2.5rem;
   }
 
-.sidebar-item:hover {
-  color: #4051b5;
-}
+  .sidebar-item:hover {
+    border: 1px solid #4051b5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #4051b5;
+    font-size: 2rem;
+  }
+
 
 .sidebar-item.active {
     color: #4051b5;
@@ -37,22 +43,6 @@
     font-weight: 500;
   }
 
-.sidebar {
-  position: fixed;
-  top: 120px;
-  left: 0;
-  width: 250px;
-  height: calc(100vh - 120px);
-  overflow-y: auto;
-  padding: 24px 24px 24px 48px;
-}
-
-.sidebar-section-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px; 
-  
-}
 
 .sidebar::-webkit-scrollbar {
   width: 6px;
@@ -62,3 +52,44 @@
   background-color: #ddd;
   border-radius: 3px;
 } 
+
+/* Sidebar */
+.sidebar-container {
+  width: 250px;
+  flex-shrink: 0;
+  position: fixed;
+  top: calc(var(--header-height, 100px) + 75px);
+  bottom: 0;
+  overflow-y: auto;
+  background-color: white;
+  border-right: 1px solid #eaeaea;
+}
+
+/* Navbar */
+.Category-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: white;
+  height: 100px;
+}
+
+/* Main content area */
+.category-content {
+  display: flex;
+  min-height: calc(100vh - var(--header-height, 100px));
+  margin-top: calc(var(--header-height, 100px) - 150px);
+  position: relative;
+}
+
+.category-main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto; /* Allow scrolling */
+  margin-left: 250px;
+  margin-top: 0;
+  height: calc(100vh - var(--header-height, 100px)); /* Ensure it fills the remaining height */
+} 
+

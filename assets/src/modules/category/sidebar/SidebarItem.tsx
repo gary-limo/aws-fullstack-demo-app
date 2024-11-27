@@ -1,22 +1,26 @@
 import React from 'react';
-import { SidebarItem as ISidebarItem } from './types';
+import { Link } from 'react-router-dom';
 
-interface Props {
-  item: ISidebarItem;
+interface SidebarItemProps {
+  item: {
+    id: string;
+    title: string;
+    link?: string;
+    isActive?: boolean;
+  };
   onClick: () => void;
 }
 
-export const SidebarItem: React.FC<Props> = ({ item, onClick }) => {
+export const SidebarItem: React.FC<SidebarItemProps> = ({ item, onClick }) => {
   return (
-    <div 
+    <Link 
+      to={item.link || `#${item.id}`}
       className={`sidebar-item ${item.isActive ? 'active' : ''}`}
       onClick={onClick}
     >
-      {item.icon && <span className="sidebar-item-icon">{item.icon}</span>}
-      <span className="sidebar-item-title">{item.title}</span>
-      {item.count !== undefined && (
-        <span className="sidebar-item-count">{item.count}</span>
-      )}
-    </div>
+      <div className="sidebar-item-content">
+        {item.title}
+      </div>
+    </Link>
   );
 }; 

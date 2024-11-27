@@ -49,8 +49,8 @@ export default class Snowflake extends Component {
             />
           </div>
           <main className="category-main">
+      
             <Installation />
-            
           
           </main>
         </div>
