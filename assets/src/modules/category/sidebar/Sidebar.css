@@ -40,3 +40,23 @@
     background-color: #ddd;
     border-radius: 3px;
 }
+
+/* Main content area styles */
+.MainContent {
+    margin-left: 250px; /* Should match sidebar width */
+    padding: 20px 40px;
+    min-height: calc(100vh - 180px);
+    overflow-y: auto;
+    position: relative;
+    top: -50px; /* Should match sidebar top */
+}
+
+.sidebar::-webkit-scrollbar,
+.MainContent::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+.MainContent::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+}
