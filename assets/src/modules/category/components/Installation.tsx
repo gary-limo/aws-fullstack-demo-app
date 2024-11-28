@@ -1,5 +1,5 @@
 import React from 'react';
-import './SnowflakeContent.css';
+//import './SnowflakeContent.css';
 //import { Gap } from "../categoryNavBar/Gap";
 
 export const Installation: React.FC = () => {

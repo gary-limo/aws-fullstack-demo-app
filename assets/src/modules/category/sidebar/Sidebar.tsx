@@ -1,6 +1,7 @@
 import React from 'react';
 import { SidebarSection as SidebarSectionComponent } from './SidebarSection';
 import { SidebarSection } from './types';
+import './Sidebar.css';
 
 interface Props {
   sections: SidebarSection[];

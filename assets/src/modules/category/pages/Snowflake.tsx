@@ -5,6 +5,11 @@ import { SearchBar } from "../../search/searchBar/SearchBar";
 import { Sidebar } from "../sidebar/Sidebar";
 import { Installation } from '../components/Installation';
 
+ 
+ 
+
+
+
 export default class Snowflake extends Component {
   private sidebarSections = [
     {
@@ -38,25 +43,18 @@ export default class Snowflake extends Component {
       <div className="Category">
         <SearchBar />
         <CategoryNavBar />
-        <Gap/>
-         
-       
-        <div className="category-content">
+        <Gap />
+        <div className="ContentArea">
           <div className="sidebar-container">
             <Sidebar 
               sections={this.sidebarSections} 
               onItemClick={this.handleItemClick}
             />
           </div>
-          <main className="category-main">
-      
+          <div className="MainContent">
             <Installation />
-          
-          </main>
+          </div>
         </div>
-
-         
-            
       </div>
     );
   }

@@ -6,7 +6,7 @@ import Home from "./modules/signup/Home";
 import Login from "./modules/signup/Login";
 import NotFound from "./modules/notFound/NotFound";
 import Signup from "./modules/signup/Signup";
-import CategoryView from "./modules/category/CategoryView";
+//import CategoryView from "./modules/category/CategoryView";
 import ShoppingCart from "./modules/cart/ShoppingCart";
 import PastPurchases from "./modules/pastPurchases/PastPurchases";
 import BestSellers from "./modules/bestSellers/BestSellers";
