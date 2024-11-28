@@ -15,8 +15,8 @@
     font-size: 14px;
     color: #4169E1;
     text-decoration: none;
-    padding: 6px 20px; /* Added left padding to the items instead */
-    line-height: 1.4;
+    padding: 3px 15px; /* Added left padding to the items instead */
+    line-height: 1;
     cursor: pointer;
     display: block;
     margin-bottom: 8px;
@@ -51,7 +51,7 @@
     top: -50px; /* Should match sidebar top */
 }
 
-.sidebar::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar,    
 .MainContent::-webkit-scrollbar {
     width: 6px;
 }
