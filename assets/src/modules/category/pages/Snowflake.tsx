@@ -3,20 +3,20 @@ import { CategoryNavBar } from "../categoryNavBar/CategoryNavBar";
 import { Gap } from "../categoryNavBar/Gap";
 import { SearchBar } from "../../search/searchBar/SearchBar";
 import { Sidebar } from "../sidebar/Sidebar";
-import { Installation } from '../components/Installation';
-
- 
- 
-
-
+import { PRreview } from '../components/PRreview';
+import { QAValidation } from '../components/QAValidation';
 
 export default class Snowflake extends Component {
+  state = {
+    selectedItem: 'PR-review'  // Default selected item
+  };
+
   private sidebarSections = [
     {
       title: "Categories",
       items: [
-        { id: "installation", title: "Installation" },
-        { id: "creating-site", title: "Creating your site" },
+        { id: "PR-review", title: "PR Review" },
+        { id: "qa-validation", title: "QA Validation"},
         { id: "publishing", title: "Publishing your site" },
         { id: "customization", title: "Customization" },
         { id: "conventions", title: "Conventions" },
@@ -34,9 +34,19 @@ export default class Snowflake extends Component {
   ];
 
   handleItemClick = (itemId: string) => {
-    // Handle item click
-    console.log(`Clicked item: ${itemId}`);
+    this.setState({ selectedItem: itemId });
   };
+
+  renderContent() {
+    switch (this.state.selectedItem) {
+      case 'PR-review':
+        return <PRreview />;
+      case 'qa-validation':
+        return <QAValidation />;
+      default:
+        return <div>Select a category</div>;
+    }
+  }
 
   render() {
     return (
@@ -52,7 +62,7 @@ export default class Snowflake extends Component {
             />
           </div>
           <div className="MainContent">
-            <Installation />
+            {this.renderContent()}
           </div>
         </div>
       </div>

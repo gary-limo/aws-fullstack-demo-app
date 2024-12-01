@@ -1,0 +1,89 @@
+.docs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.docs-header {
+  margin-bottom: 40px;
+}
+
+.docs-header h1 {
+  font-size: 36px;
+  color: #16191f;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.docs-header p {
+  font-size: 16px;
+  color: #545b64;
+  margin-bottom: 16px;
+  line-height: 1.5;
+  max-width: 900px;
+}
+
+.docs-link {
+  color: #0972d3;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.docs-link:hover {
+  text-decoration: underline;
+}
+
+.service-item {
+  padding: 24px 0;
+  border-bottom: 1px solid #e9ebed;
+  position: relative;
+}
+
+.service-label {
+  background: #f2f3f3;
+  color: #545b64;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.service-item h2 {
+  font-size: 24px;
+  color: #16191f;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.service-item p {
+  color: #545b64;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.arrow {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #545b64;
+  font-size: 20px;
+}
+
+.service-item:hover {
+  cursor: pointer;
+  background: #fafafa;
+}
+
+@media (max-width: 768px) {
+  .docs-header h1 {
+    font-size: 28px;
+  }
+  
+  .service-item h2 {
+    font-size: 20px;
+    padding-right: 24px;
+  }
+}
