@@ -3,6 +3,7 @@ import Select from 'react-select';
 import ReactDiffViewer from 'react-diff-viewer';
 import { fetchGithubContent } from '../../../services/githubService';
 import html2pdf from 'html2pdf.js';
+import './QAValidation.css';
 
 interface TableOption {
   value: string;
@@ -119,106 +120,107 @@ export const QAValidation: React.FC = () => {
   };
 
   return (
-    <div className="qa-validation-container p-6">
-      <h1 className="text-2xl font-bold mb-6">Table Definition Comparison</h1>
-      
-      <div className="flex justify-between items-center mb-6">
-        <div className="w-1/4">
-          <Select<TableOption>
-            isMulti={false}
-            options={tableOptions}
-            value={selectedFile}
-            onChange={handleTableSelect}
-            className="mb-6"
-            placeholder="Select tables to compare..."
-            isLoading={isLoading}
-            isSearchable={true}
-            maxMenuHeight={300}
-            styles={{
-              control: (base) => ({
-                ...base,
-                minHeight: '50px',
-                borderRadius: '8px',
-                boxShadow: 'none',
-                borderColor: '#e2e8f0',
-                '&:hover': {
-                  borderColor: '#cbd5e1'
-                }
-              }),
-              menu: (base) => ({
-                ...base,
-                borderRadius: '8px',
-                boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)',
-              }),
-              option: (base, state) => ({
-                ...base,
-                backgroundColor: state.isSelected 
-                  ? '#3b82f6' 
-                  : state.isFocused 
-                    ? '#e2e8f0' 
-                    : 'white',
-                '&:active': {
-                  backgroundColor: '#bfdbfe'
-                }
-              })
-            }}
-          />
+    <div className="qa-container">
+      <div className="qa-content">
+        <div className="qa-header">
+          <h1 className="qa-title">Schema Comparison</h1>
+          <p className="qa-subtitle">Compare and validate table definitions across environments</p>
         </div>
-        
-        {selectedFile && (
-          <button
-            onClick={handleDownloadPDF}
-            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-            disabled={isLoading}
-          >
-            Download PDF Report
-          </button>
-        )}
-      </div>
 
-      {error && (
-        <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
-          {error}
-        </div>
-      )}
-
-      <div ref={pdfRef}>
-        {selectedFile && (
-          <div className="mb-6 p-4 bg-gray-50 rounded">
-            <h2 className="text-xl font-semibold mb-2">QA Validation Report</h2>
-            <p className="mb-2">Date: {new Date().toLocaleDateString()}</p>
-            <p className="mb-2">Table: {selectedFile.label}</p>
-            <p className="mb-4">
-              {isDifferent ? (
-                <span className="text-red-600 font-semibold">
-                  ⚠️ Differences found between source and target DDL definitions. Please review the highlighted changes below.
-                </span>
-              ) : (
-                <span className="text-green-600 font-semibold">
-                  ✓ The DDL definitions are identical between source and target.
-                </span>
-              )}
-            </p>
-          </div>
-        )}
-
-        {selectedFile && fileContents.source && fileContents.target && (
-          <div className="diff-viewer-container">
-            <ReactDiffViewer
-              oldValue={fileContents.source}
-              newValue={fileContents.target}
-              splitView={true}
-              leftTitle={`Source: ${selectedFile.label}`}
-              rightTitle={`Target: ${selectedFile.label}`}
-              styles={{
-                contentText: {
-                  fontFamily: 'Monaco, Consolas, "Courier New", monospace',
-                  fontSize: '10px',
-                }
-              }}
+        <div className="control-panel">
+          <div className="select-container">
+            <label className="select-label">Select Table Schema</label>
+            <Select<TableOption>
+              isMulti={false}
+              options={tableOptions}
+              value={selectedFile}
+              onChange={handleTableSelect}
+              placeholder="Choose a table to compare..."
+              isLoading={isLoading}
+              isSearchable={true}
+              maxMenuHeight={300}
             />
           </div>
+          
+          {selectedFile && (
+            <button className="export-button" onClick={handleDownloadPDF} disabled={isLoading}>
+              Export Report
+            </button>
+          )}
+        </div>
+
+        {error && (
+          <div className="error-message">
+            {error}
+          </div>
         )}
+
+        <div ref={pdfRef}>
+          {selectedFile && (
+            <div className="validation-report">
+              <div className="report-header">
+                <h2 className="report-title">Validation Report</h2>
+                <span className="report-date">{new Date().toLocaleDateString()}</span>
+              </div>
+              
+              <div className="table-name">
+                {selectedFile.label}
+              </div>
+
+              <div className={`status-message ${isDifferent ? 'different' : 'identical'}`}>
+                {isDifferent ? (
+                  <span>Differences detected in DDL definitions</span>
+                ) : (
+                  <span>DDL definitions match exactly</span>
+                )}
+              </div>
+            </div>
+          )}
+
+          {selectedFile && fileContents.source && fileContents.target && (
+            <div className="diff-container">
+              <ReactDiffViewer
+                oldValue={fileContents.source}
+                newValue={fileContents.target}
+                splitView={true}
+                leftTitle={`Source: ${selectedFile.label}`}
+                rightTitle={`Target: ${selectedFile.label}`}
+                styles={{
+                  variables: {
+                    light: {
+                      diffViewerBackground: '#ffffff',
+                      diffViewerColor: '#334155',
+                      addedBackground: '#f0fdf4',
+                      addedColor: '#166534',
+                      removedBackground: '#fef2f2',
+                      removedColor: '#991b1b',
+                      wordAddedBackground: '#dcfce7',
+                      wordRemovedBackground: '#fee2e2',
+                    }
+                  },
+                  contentText: {
+                    fontFamily: 'Monaco, Consolas, monospace',
+                    fontSize: '13px',
+                    lineHeight: '1.6',
+                  },
+                  line: {
+                    padding: '6px 12px',
+                  },
+                  titleBlock: {
+                    backgroundColor: '#f8fafc',
+                    padding: '12px 16px',
+                    borderBottom: '1px solid #e2e8f0',
+                    fontWeight: '500',
+                    color: '#0f172a'
+                  }
+                }}
+                compareMethod="diffWords"
+                renderContent={str => str.trim()}
+                useDarkTheme={false}
+              />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
